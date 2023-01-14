@@ -1,2 +1,2 @@
 rootProject.name = 'PriceInWords'
-include 'src'
+include 'project'

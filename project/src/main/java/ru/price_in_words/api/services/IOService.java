@@ -4,4 +4,6 @@ public interface IOService {
     void outputStr(String s);
     String readString();
     String readString(String prompt);
+
+    void readString(Object o);
 }

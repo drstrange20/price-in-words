@@ -4,7 +4,7 @@ plugins {
 }
 
 allprojects {
-    group "ru.otus"
+    group "ru.price_in_words"
 
     repositories {
         mavenLocal()

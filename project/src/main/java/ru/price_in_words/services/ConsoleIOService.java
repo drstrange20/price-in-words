@@ -29,4 +29,9 @@ public class ConsoleIOService implements IOService {
         outputStr(prompt);
         return readString();
     }
+
+    @Override
+    public void readString(Object o) {
+        out.println(o);
+    }
 }
