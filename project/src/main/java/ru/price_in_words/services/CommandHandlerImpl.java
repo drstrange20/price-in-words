@@ -1,22 +1,25 @@
 package ru.price_in_words.services;
 
 import ru.price_in_words.api.services.CommandHandler;
-import ru.price_in_words.api.services.Currency;
 import ru.price_in_words.api.services.IOService;
 import ru.price_in_words.api.services.Parser;
-import ru.price_in_words.domain.Number;
+import ru.price_in_words.domain.CurrencyEndingsInWords;
+import ru.price_in_words.domain.Numbers;
 import ru.price_in_words.domain.Result;
+import ru.price_in_words.domain.Rubles;
+
 import java.util.concurrent.atomic.AtomicBoolean;
-import static java.util.Objects.isNull;
 
 public class CommandHandlerImpl implements CommandHandler {
     private static final String EXIT_COMMAND = "exit";
     private final IOService ioService;
     private final Parser parser;
+    private final CurrencyEndingsInWords instance;
 
-    public CommandHandlerImpl(IOService ioService, Parser parser) {
+    public CommandHandlerImpl(IOService ioService, Parser parser, CurrencyEndingsInWords instance) {
         this.ioService = ioService;
         this.parser = parser;
+        this.instance = instance;
     }
 
     @Override
@@ -25,19 +28,19 @@ public class CommandHandlerImpl implements CommandHandler {
             return false;
         }
         executionFlag.set(false);
-        ioService.outputStr("Goodbye");
+        ioService.outputStr("До свидания");
         return true;
     }
 
     @Override
     public void handlePriceInWordsCommand(String stringNumber) {
-        Number number = parser.convertStringToInteger(stringNumber);
-        if (isNull(number)) {
+        Numbers number = parser.parseInt(stringNumber);
+        if (number == null) {
             ioService.outputStr("Неверно введена сумма");
             return;
         }
-        Currency currency = parser.getWordByLastNumber(stringNumber);
-        Result result = new Result(number, currency);
+        Rubles rubles = instance.getCurrencyEndingInWords(number.getNumbersLastDigit());
+        Result result = new Result(number, rubles);
         ioService.outputStr(result.toString());
     }
 }

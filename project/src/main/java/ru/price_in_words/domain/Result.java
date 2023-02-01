@@ -1,18 +1,16 @@
 package ru.price_in_words.domain;
 
-import ru.price_in_words.api.services.Currency;
-
 public class Result {
-    private final Number number;
-    private final Currency currency;
+    private final Numbers number;
+    private final Rubles rubles;
 
-    public Result(Number number, Currency currency) {
+    public Result(Numbers number, Rubles currency) {
         this.number = number;
-        this.currency = currency;
+        this.rubles = currency;
     }
 
     @Override
     public String toString() {
-        return number + " " + currency;
+        return number + " " + rubles;
     }
 }
