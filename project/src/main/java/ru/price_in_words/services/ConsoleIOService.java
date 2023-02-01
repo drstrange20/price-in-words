@@ -5,6 +5,7 @@ import ru.price_in_words.api.services.IOService;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+
 public class ConsoleIOService implements IOService {
     private final PrintStream out;
     private final Scanner in;
@@ -28,10 +29,5 @@ public class ConsoleIOService implements IOService {
     public String readString(String prompt) {
         outputStr(prompt);
         return readString();
-    }
-
-    @Override
-    public void readString(Object o) {
-        out.println(o);
     }
 }

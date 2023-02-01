@@ -6,11 +6,11 @@ import ru.price_in_words.api.services.IOService;
 import ru.price_in_words.api.services.Parser;
 import ru.price_in_words.domain.Number;
 import ru.price_in_words.domain.Result;
-
 import java.util.concurrent.atomic.AtomicBoolean;
+import static java.util.Objects.isNull;
 
 public class CommandHandlerImpl implements CommandHandler {
-    private static final String EXIT_COMMAND = "выход";
+    private static final String EXIT_COMMAND = "exit";
     private final IOService ioService;
     private final Parser parser;
 
@@ -25,19 +25,19 @@ public class CommandHandlerImpl implements CommandHandler {
             return false;
         }
         executionFlag.set(false);
-        ioService.outputStr("До свидания");
+        ioService.outputStr("Goodbye");
         return true;
     }
 
     @Override
     public void handlePriceInWordsCommand(String stringNumber) {
         Number number = parser.convertStringToInteger(stringNumber);
-        if (number == null) {
+        if (isNull(number)) {
             ioService.outputStr("Неверно введена сумма");
             return;
         }
         Currency currency = parser.getWordByLastNumber(stringNumber);
         Result result = new Result(number, currency);
-        ioService.readString(result);
+        ioService.outputStr(result.toString());
     }
 }

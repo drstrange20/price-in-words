@@ -1,15 +1,11 @@
 package ru.price_in_words.services;
 
 import ru.price_in_words.api.services.Parser;
-import ru.price_in_words.domain.Number;
 import ru.price_in_words.domain.Rubles;
 
-public class ParserImpl implements Parser {
-    @Override
-    public Number convertStringToInteger(String stringNumber) {
-        return Parser.super.convertStringToInteger(stringNumber);
-    }
+import static java.lang.Integer.parseInt;
 
+public class ParserImpl implements Parser {
     @Override
     public Rubles getWordByLastNumber(String stringNumber) {
         String currencyName;
@@ -23,18 +19,18 @@ public class ParserImpl implements Parser {
     }
 
     public String getWordByLastNumberForMoreThanOneDigit(String[] arr) {
-        if (Integer.parseInt(arr[arr.length - 1]) == 1 && Integer.parseInt(arr[arr.length - 2]) != 1) {
+        if (parseInt(arr[arr.length - 1]) == 1 && parseInt(arr[arr.length - 2]) != 1) {
             return "рубль";
-        } else if ((Integer.parseInt(arr[arr.length - 1]) >= 2 && Integer.parseInt(arr[arr.length - 1]) < 5) && (Integer.parseInt(arr[arr.length - 2]) != 1)) {
+        } else if ((parseInt(arr[arr.length - 1]) >= 2 && parseInt(arr[arr.length - 1]) < 5) && (parseInt(arr[arr.length - 2]) != 1)) {
             return "рубля";
         }
         return "рублей";
     }
 
     public String getWordByLastNumberForOneDigit(String[] arr) {
-        if (Integer.parseInt(arr[0]) == 1) {
+        if (parseInt(arr[0]) == 1) {
             return "рубль";
-        } else if (Integer.parseInt(arr[0]) > 1 && Integer.parseInt(arr[0]) < 5) {
+        } else if (parseInt(arr[0]) > 1 && parseInt(arr[0]) < 5) {
             return "рубля";
         }
         return "рублей";
