@@ -25,6 +25,10 @@ public class ConsoleIOService implements IOService {
         return in.nextLine();
     }
 
+    public void outputToStr(Object o) {
+        out.println(o);
+    }
+
     @Override
     public String readString(String prompt) {
         outputStr(prompt);

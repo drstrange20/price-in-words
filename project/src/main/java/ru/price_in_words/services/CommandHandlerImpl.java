@@ -41,6 +41,6 @@ public class CommandHandlerImpl implements CommandHandler {
         }
         Rubles rubles = instance.getCurrencyEndingInWords(number.getNumbersLastDigit());
         Result result = new Result(number, rubles);
-        ioService.outputStr(result.toString());
+        ioService.outputToStr(result);
     }
 }
