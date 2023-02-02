@@ -23,5 +23,11 @@ shadowJar {
         attributes 'Main-Class': 'ru.price_in_words.Main'
     }
 }
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
 
 tasks.build.dependsOn tasks.shadowJar

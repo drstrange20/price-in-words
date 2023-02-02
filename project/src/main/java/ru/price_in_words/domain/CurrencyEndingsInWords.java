@@ -9,7 +9,7 @@ public enum CurrencyEndingsInWords {
         this.endings = endings;
     }
 
-    public Rubles getCurrencyEndingInWords(int lastDigit) {
+    public Rubles getCurrencyEndingInWords(long lastDigit) {
         if(lastDigit == 1) {
             return new Rubles(endings[0]);
         } else if(lastDigit >= 2 && lastDigit <= 4) {

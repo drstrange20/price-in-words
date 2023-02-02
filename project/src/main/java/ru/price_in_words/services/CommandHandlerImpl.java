@@ -33,14 +33,13 @@ public class CommandHandlerImpl implements CommandHandler {
     }
 
     @Override
-    public void handlePriceInWordsCommand(String stringNumber) {
-        Numbers number = parser.parseInt(stringNumber);
+    public Result handlePriceInWordsCommand(String stringNumber) {
+        Numbers number = parser.parseLong(stringNumber);
         if (number == null) {
-            ioService.outputStr("Неверно введена сумма");
-            return;
+            ioService.outputStr("Число должно быть не меньше 0 и не больше чем 9,222 триллиона");
+            return null;
         }
         Rubles rubles = instance.getCurrencyEndingInWords(number.getNumbersLastDigit());
-        Result result = new Result(number, rubles);
-        ioService.outputToStr(result);
+        return new Result(number, rubles);
     }
 }

@@ -7,6 +7,21 @@ public class Rubles {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Rubles rubles = (Rubles) o;
+
+        return currencyName.equals(rubles.currencyName);
+    }
+
+    @Override
+    public int hashCode() {
+        return currencyName.hashCode();
+    }
+
+        @Override
     public String toString() {
         return currencyName;
     }

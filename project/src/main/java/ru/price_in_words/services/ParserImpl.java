@@ -6,10 +6,10 @@ import ru.price_in_words.domain.Numbers;
 
 public class ParserImpl implements Parser {
     @Override
-    public Numbers parseInt(String stringNumber) {
-        int number;
+    public Numbers parseLong(String stringNumber) {
+        long number;
         try {
-            number = Integer.parseInt(stringNumber);
+            number = Long.parseLong(stringNumber);
             if (number < 0) {
                 throw new NumberFormatException();
             }
