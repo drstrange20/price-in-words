@@ -26,6 +26,7 @@ public class ApplicationRunner {
                 Result result = commandHandler.handlePriceInWordsCommand(commandOrNumber);
                 if (result == null) {
                     run();
+                    break;
                 } else {
                     ioService.outputToStr(result);
                 }

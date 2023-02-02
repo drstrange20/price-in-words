@@ -1,6 +1,7 @@
 package ru.price_in_words.services;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.price_in_words.api.services.IOService;
 import ru.price_in_words.api.services.Parser;
@@ -13,6 +14,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 
 class CommandHandlerImplTest {
+    @DisplayName("Проверка корректности добавления окончания валюты")
     @Test
     void handlePriceInWordsCommand() {
         IOService ioService = new ConsoleIOService();
@@ -33,6 +35,7 @@ class CommandHandlerImplTest {
         Assertions.assertEquals(expected2, actual2);
     }
 
+    @DisplayName("Проверка корректного выхода из программы")
     @Test
     void handleExitCommand() {
         AtomicBoolean executionFlag = new AtomicBoolean(true);

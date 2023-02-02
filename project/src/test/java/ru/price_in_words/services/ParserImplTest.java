@@ -1,13 +1,14 @@
 package ru.price_in_words.services;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.price_in_words.api.services.Parser;
 import ru.price_in_words.domain.Numbers;
 
 
 class ParserImplTest {
-
+    @DisplayName("Проверка корректной работы парсера")
     @Test
     void parseLong() {
         Parser parser = new ParserImpl();
